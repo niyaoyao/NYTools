@@ -25,15 +25,15 @@ extension NSObject {
         return properties
     }
     
-    class func modelObject(dictionary: Dictionary<String, AnyObject>) -> AnyObject {
-        let modelObject = self.init()
+    class func objectWithDictionary(dictionary: Dictionary<String, AnyObject>) -> AnyObject {
+        let objectWithDictionary = self.init()
         let propertyMapper = self.propertyMapper() as NSDictionary
         
         for key in dictionary.keys {
            let modelKey = ((propertyMapper.valueForKey(key)) != nil) ? propertyMapper.valueForKey(key) : key
-            modelObject.setValue((dictionary as NSDictionary).objectForKey(key), forKey: modelKey as! String)
+            objectWithDictionary.setValue((dictionary as NSDictionary).objectForKey(key), forKey: modelKey as! String)
         }
-        return modelObject
+        return objectWithDictionary
     }
     
     class func propertyMapper() -> Dictionary<String, AnyClass> {
