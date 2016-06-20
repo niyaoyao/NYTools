@@ -6,14 +6,14 @@ NYTools supports multiple methods for installing the library in a project
 #### Install Carthage
 [Carthage] is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 You can install Carthage with [Homebrew]
-> `brew update`
-> `brew install carthage`
+'' brew update
+'' brew install carthage
 
 #### Getting start with NYTools
 1. Create **Cartfile** at your project source path
 2. Edit **Cartfile** as follow
 
-> `github "niyaoyao/NYTools"`
+'' github "niyaoyao/NYTools"
 
 3. Run `carthage update` in Terminal
 4. Drag $(PROJECT)/Carthage/Checkouts/NYTools into your project 
@@ -24,14 +24,14 @@ You can install Carthage with [Homebrew]
 1. Create **Podfile**
 2. Edit **Podfile** as follow
 
-> source 'https://github.com/niyaoyao/NYTools.git'
-> platform :ios, '8.0'
-> 
-> target 'NYDiaryOC' do
-> pod 'NYTools', '~>0.0.1'
-> end
+'' source 'https://github.com/niyaoyao/NYTools.git'
+'' platform :ios, '8.0' 
+'' target 'ProjectName' do
+'' pod 'NYTools', '~>0.0.1'
+'' use_frameworks!
+'' end
 
 3. Run `pod install`
 
 ## License
-NYTools is released under th MIT license
+NYTools is released under the MIT license
