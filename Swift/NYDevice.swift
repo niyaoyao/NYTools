@@ -9,21 +9,13 @@
 import Foundation
 import UIKit
 
-let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
-let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
+let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 extension NSObject {
     class func getUUID() -> String {
-        var UUID = UIDevice.currentDevice().identifierForVendor?.UUIDString
-        var count = 0
-        while UUID == nil {
-            UUID = UIDevice.currentDevice().identifierForVendor?.UUIDString
-            count += 1
-            if count > 100 {
-                break
-            }
-        }
-        return UUID!
+        let uuid = UIDevice.current.identifierForVendor?.uuid
+        return String(describing: uuid)
     }
     
 }
