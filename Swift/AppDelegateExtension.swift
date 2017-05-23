@@ -11,12 +11,9 @@ import UIKit
 
 extension AppDelegate {
     func setupRootViewController() {
-        /*
-         custom methods for setup window
-        window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
-        window!.rootViewController = controllerForID(storyboardID)
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window!.rootViewController = ViewController() // Change rootViewController for what you need
         window!.makeKeyAndVisible()
-         */
     }
     
     func switchRootViewControllerTo(destinationController: UIViewController) {
@@ -25,14 +22,13 @@ extension AppDelegate {
             window?.makeKeyAndVisible()
         } else {
             if window?.rootViewController?.presentedViewController != nil {
-                window?.rootViewController?.dismissViewControllerAnimated(false, completion: { 
+                window?.rootViewController?.dismiss(animated: false, completion: {
                     self.window?.rootViewController = destinationController
                 })
             } else {
                 window?.rootViewController = destinationController
             }
         }
-        
     }
     
     func setupAppearance() {
@@ -42,31 +38,23 @@ extension AppDelegate {
     }
     
     private func setupTabBarAppearance() {
-        /*
-         custom methods setupTabBarAppearance
-         
         let tabBar:UITabBar = UITabBar.appearance()
-        tabBar.tintColor = ThemeManager.sharedManager().themeColor
-        tabBar.backgroundImage = UIImage.unitImageForColor(UIColor.colorForAlpha(COLOR_HEX_WHITE, alpha: CGFloat( 0.9)))
-        tabBar.shadowImage = UIImage.unitImageForColor(UIColor.colorForAlpha(COLOR_HEX_WHITE, alpha: CGFloat(0)))
-        tabBar.translucent = true
-         */
+        tabBar.tintColor = UIColor.hexValue(hex: 0x333333)
+        tabBar.backgroundImage = UIImage.unitImageForColor(color: UIColor.white)
+        tabBar.shadowImage = UIImage.unitImageForColor(color: UIColor.hexValue(hex: 0xffffff))
+        tabBar.isTranslucent = true
     }
     
     private func setupNavigationBarAppearance() {
-        /* custom methods setupNavigationBarAppearance
         let navigationBar:UINavigationBar = UINavigationBar.appearance()
-        navigationBar.tintColor = ThemeManager.sharedManager().forgroundColor
-        navigationBar.translucent = false
-        navigationBar.setBackgroundImage(UIImage.unitImageForColor(ThemeManager.sharedManager().backgroundColor),
-                                         forBarMetrics: UIBarMetrics.Default)
-        */
+        navigationBar.tintColor = UIColor.hexValue(hex: 0x5ad610)
+        navigationBar.isTranslucent = false
+        navigationBar.setBackgroundImage(UIImage.unitImageForColor(color: UIColor.white),
+                                         for: UIBarMetrics.default)
     }
     
     private func setupWindowAppearance() {
-        /* custom methods setupWindowAppearance
-        window?.layer.cornerRadius = CGFloat(5)
+        window?.layer.cornerRadius = 5.0
         window?.layer.masksToBounds = true
-        */
     }
 }
